@@ -1,0 +1,17 @@
+{
+  "apps": [{
+    "name"  : "domain-snatcher",
+    "script": "npm",
+    "args": "start"
+  }],
+  "deploy": {
+    "production": {
+      "user"       : "me",
+      "host"       : "balthazargronon.com",
+      "ref"        : "origin/master",
+      "repo"       : "git@github.com:balthazar/domain-snatcher.git",
+      "path"       : "/var/www/domain-snatcher",
+      "post-deploy": "yarn && pm2 startOrRestart ecosystem.json5 --env production --log-date-format 'DD-MM HH:mm:ss.SSS'",
+    }
+  }
+}
